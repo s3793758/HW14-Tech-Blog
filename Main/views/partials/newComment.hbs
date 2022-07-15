@@ -1,0 +1,50 @@
+<div class="container post">
+    <div class="navbar nav-post">
+        <a href="/post/{{post.id}}"><h4 class="nav-text">{{post.title}}</h4></a>
+        <h6 class="nav-text">Posted by {{post.User.fullname}} on {{post.postDate}}</h6>
+    </div>
+    <div class="nav-content"><h5>{{post.content}}</h5></div>
+</div>
+<br>
+{{!-- New Comment entry --}}
+<form class="create-comment-form text-color-white">
+    <input type="hidden" id="post-id" value={{post.id}}>
+    <div class="container post-comment">
+        <div class="navbar nav-comment">
+            <h6 class="nav-text">&nbsp;</h6>
+        </div>
+        <div class="nav-content">
+            <h5>Comment</h5>
+            <textarea class="form-control" id="comment-content" rows="3" placeholder="Comment Content" ></textarea>
+        </div>
+        <div class="nav-content d-grid gap-2">
+            <button class="btn btn-secondary" id="create-comment" type="submit">Submit</button>
+        </div>  
+    </div>
+</form>
+<script src="/js/createcomment.js"></script>
+<br>
+{{!-- All Comments display --}}
+
+{{#if comments.length}}
+<div class="container comment">
+    <h4>Comments</h4>
+</div>
+{{#each comments as |comment| }}
+
+    <div class="container post">
+        <div class="navbar nav-post">
+            
+            <h6 class="nav-text">&nbsp;</h6>
+        </div>
+        <div class="nav-content">
+            <h5>{{comment.comment}}</h5>
+            <h6 class="comment-stamp">Posted by {{comment.User.fullname}} on {{comment.postDate}}</h6>
+        </div>
+    </div>
+{{/each}}
+{{else}}
+    <div class="container comment">
+        <h4>No Comments</h4>
+    </div>
+{{/if}}

@@ -1,0 +1,16 @@
+{{#if posts.length}}
+{{#each posts as |post| }}
+
+<div class="container post">
+    <div class="navbar nav-post">
+        <a href="/post/update/{{post.id}}"><h4 class="nav-text">{{post.title}}</h4></a>
+        <h6 class="nav-text">Posted by {{post.User.fullname}} on {{post.postDate}}</h6>
+    </div>
+    <div class="nav-content"><h5>{{post.content}}</h5></div>
+</div>
+
+{{/each}}
+{{/if}}
+<br>
+<div class="text-center"><button type="button" id="new-post" class="btn btn-outline-secondary">+ New Post</button> </div>
+<script src="/js/newpost.js"></script>

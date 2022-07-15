@@ -1,0 +1,19 @@
+  {{#if posts.length}}
+    {{#each posts as |post| }}
+    <div class="container post">
+        <div class="navbar nav-post">
+
+            {{#if ../loggedIn}}
+                <a href="/post/{{post.id}}"><h4 class="nav-text">{{post.title}}</h4></a>
+            {{else}}
+                <h4 class="nav-text">{{post.title}}</h4>
+            {{/if}}
+            
+            <h6 class="nav-text">Posted by {{post.User.fullname}} on {{post.postDate}}</h6>
+        </div>
+        <div class="nav-content"><h5>{{post.content}}</h5></div>
+    </div>
+    {{/each}}
+  {{else}}
+  <h2>No posts to display.</h2>
+  {{/if}}
